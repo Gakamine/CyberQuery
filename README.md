@@ -1,4 +1,4 @@
-# CyberSearch (temporary name)
+# CyberQyery (temporary name)
 
 ## What is this project
 This project is supposed to be a metasearch engine for cybersecurity researchers.

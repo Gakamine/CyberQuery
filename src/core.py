@@ -1,4 +1,4 @@
-from .sources import *
+import importlib
 import os
 import yaml
 import re
@@ -8,11 +8,8 @@ def search(keyword):
     data_sources=get_sources(keyword)
     if data_sources:
         for source in data_sources:
-            test=sources.Shodan()
-            print(test.ok())
-            # classname = srclib.init(source)
-            # src.shodan.ok()
-            # classname = str_to_class(source)
+            module = importlib.import_module("src.sources."+source)
+            return module.run()
     # else:
     # Set a default option here...
     return None
