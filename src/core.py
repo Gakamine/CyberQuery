@@ -7,9 +7,9 @@ import sys
 def search(keyword):
     data_sources=get_sources(keyword)
     if data_sources:
-        for source in data_sources:
-            module = importlib.import_module("src.sources."+source)
-            return module.run(keyword)
+        for data_source in data_sources:
+            module = importlib.import_module("src.sources."+data_source["source"])
+            return module.run(keyword,data_source["context"])
     # else:
     # Set a default option here...
     return None
@@ -21,10 +21,11 @@ def get_sources(keyword):
         with open('src/regex_rules/'+file, 'r') as file:
             yml_file = yaml.safe_load(file)
             rules = yml_file['rules']
+            context = yml_file['name']
             for rule in rules:
                 if re.search(rule,keyword):
                     for source in yml_file['sources']:
-                        sources.append(source)
+                        sources.append({"source":source,"context":context})
                     break
     return sources
 
