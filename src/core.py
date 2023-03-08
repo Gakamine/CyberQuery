@@ -9,7 +9,7 @@ def search(keyword):
     if data_sources:
         for source in data_sources:
             module = importlib.import_module("src.sources."+source)
-            return module.run()
+            return module.run(keyword)
     # else:
     # Set a default option here...
     return None
