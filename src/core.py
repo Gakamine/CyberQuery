@@ -5,17 +5,19 @@ import re
 import sys
 
 def search(keyword):
+    data = []
     data_sources=get_sources(keyword)
     if data_sources:
         for data_source in data_sources:
             try:
                 module = importlib.import_module("src.sources."+data_source["source"])
-                return module.run(keyword,data_source["context"])
+                output = module.run(keyword,data_source["context"])
+                data.append({"source": data_source["source"], "error": False, "data": output})
             except:
-                return "An error occured"
+                data.append({"source": data_source["source"], "error": True, "data": "An error occured"})
     # else:
     # Set a default option here...
-    return None
+    return data
 
 def get_sources(keyword):
     files = os.listdir(r"src/regex_rules")
