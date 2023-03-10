@@ -8,8 +8,11 @@ def search(keyword):
     data_sources=get_sources(keyword)
     if data_sources:
         for data_source in data_sources:
-            module = importlib.import_module("src.sources."+data_source["source"])
-            return module.run(keyword,data_source["context"])
+            try:
+                module = importlib.import_module("src.sources."+data_source["source"])
+                return module.run(keyword,data_source["context"])
+            except:
+                return "An error occured"
     # else:
     # Set a default option here...
     return None
