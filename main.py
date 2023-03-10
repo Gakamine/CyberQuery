@@ -9,7 +9,7 @@ def main():
     query = request.args.get('q')
     if query:
         result = core.search(query)
-        return render_template('index.html', result=result)
+        return render_template('search.html', result=result)
     else:
         return render_template('index.html')
 

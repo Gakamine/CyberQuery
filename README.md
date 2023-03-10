@@ -8,6 +8,5 @@ Only the base project is available for now and is still at a very very early sta
 This project was made using Python3.
 Run the following command in the project folder:
 ``pip3 install -r requirements.txt``
-Then you can try using the project like this:
-``python3 main.py <keyword>``
-The project will later implement a frontend and advanced search features.
+Then you can try to run the project like this:
+``python3 main.py``

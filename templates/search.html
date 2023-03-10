@@ -1,13 +1,16 @@
 <head>
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/search.css') }}">
     <title>CyberQuery</title>
 </head>
 <body>
     <div class="container">
         <a class="logo" href="/"><img src="{{ url_for('static',filename='img/logo/logo.svg') }}"/></a>
         <form class="search-input">
-            <input autocomplete="off" type="text" name="q" placeholder="Enter your query"></input>
+            <input autocomplete="off" type="text" name="q" value="{{ request.args.get('q') }}" placeholder="Enter your query"></input>
             <button type="submit"><img src="{{ url_for('static',filename='img/icons/search.svg') }}"/></button>
         </form>
+    </div>
+    <div class="search-results">
+        {{result}}
     </div>
 </body>
