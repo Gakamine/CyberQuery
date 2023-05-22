@@ -1,5 +1,6 @@
 name: email_address
 description: "Detect emails input"
+type: plugin
 rules:
   - (^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)
 sources:
